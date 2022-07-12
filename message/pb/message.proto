@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package bitswap.message.pb;
 
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "gogoproto/gogo.proto";
 
 message Message {
 
@@ -43,4 +43,5 @@ message Message {
   repeated Block payload = 3 [(gogoproto.nullable) = false];		// used to send Blocks in bitswap 1.1.0
   repeated BlockPresence blockPresences = 4 [(gogoproto.nullable) = false];
   int32 pendingBytes = 5;
+  int64 time = 6;
 }

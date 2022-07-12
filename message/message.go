@@ -245,7 +245,7 @@ func newMessageFromProto(pbm pb.Message) (BitSwapMessage, error) {
 	}
 
 	m.pendingBytes = pbm.PendingBytes
-
+	m.time = pbm.Time
 	return m, nil
 }
 
@@ -438,6 +438,7 @@ func (m *impl) ToProtoV0() *pb.Message {
 	for _, b := range blocks {
 		pbm.Blocks = append(pbm.Blocks, b.RawData())
 	}
+	pbm.Time = m.time
 	return pbm
 }
 
@@ -467,7 +468,7 @@ func (m *impl) ToProtoV1() *pb.Message {
 	}
 
 	pbm.PendingBytes = m.PendingBytes()
-
+	pbm.Time = m.time
 	return pbm
 }
 
